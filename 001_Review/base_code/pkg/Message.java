@@ -4,7 +4,7 @@ import java.io.*;
 
 public class Message {
 
-	ArrayList<Message> messageList = new ArrayList<Message>();
+	ArrayList<Message> messageList;
 	String author;
 	String subject;
 	String body;
@@ -16,6 +16,7 @@ public class Message {
 		subject = "";
 		body = "";
 		id = -1;
+		messageList = new ArrayList<Message>();
 	}
 	
 	// Parameterized Constructor
@@ -24,6 +25,7 @@ public class Message {
 		this.subject = subj;
 		this.body = bod;
 		this.id = i;
+		this.messageList = new ArrayList<Message>();
 	}
 
 	// This function is responsbile for printing the Message
@@ -52,7 +54,7 @@ public class Message {
 
 
 		System.out.println("\"" + this.getSubject() + "\"");
-		System.out.println("From: " + this.author + " "+ "\"" + this.body + "\"\n");
+		System.out.println(correctIndents(indentation) + "From: " + this.author + ": "+ "\"" + this.body + "\"\n");
 		System.out.println("\n");
 
 		//focus on this last
@@ -69,7 +71,7 @@ public class Message {
 		}
 			
 
-		System.out.println("---------------------------------------------------");
+		//System.out.println("---------------------------------------------------");
 		
 		return;
 		

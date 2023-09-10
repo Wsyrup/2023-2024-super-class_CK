@@ -217,15 +217,21 @@ public class BBoard {		// This is your main file that connects all classes.
 			System.out.println("There is nothing to print. Please create a topic.");
 			return;
 		}
-
-		for(int i = 0; i < msgList.size() - 1; i++)
+		else
 		{
-			if(msgList.get(i) instanceof Topic)
+			System.out.print("Message: " + msgList.get(0).getId());
+			System.out.println("\"" + msgList.get(0).getSubject() + "\"");
+			System.out.println("From: " + msgList.get(0).author + ": "+ "\"" + msgList.get(0).body + "\"\n");
+			System.out.println("\n");
+			for(int i = 0; i < msgList.size() - 1; i++)
 			{
-				msgList.get(i).print(1);
+				if(msgList.get(i) instanceof Topic)
+				{
+					msgList.get(i).print(1);
+				}
 			}
+			return;
 		}
-		return;
 	}
 
 
@@ -318,6 +324,10 @@ public class BBoard {		// This is your main file that connects all classes.
 			{
 				System.out.println("returning to menu.");
 				return;
+			}
+			else if(reId == 0)
+			{
+				System.out.println("Invalid ID, try again.");
 			}
 			else if(reId < -1 || reId > msgList.size()+1)
 			{

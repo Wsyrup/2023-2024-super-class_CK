@@ -80,6 +80,7 @@ public class User {
 
 	//tostring method for testing purposes.
 	@Override
+	//Issues caused by "enter" during password input. 
 	public String toString()
 	{
 		return new String("Username: " + this.getUsername() + "Password: " + this.password);
