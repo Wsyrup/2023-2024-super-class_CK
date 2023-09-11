@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch with Arguments Prompt",
+            "request": "launch",
+            "mainClass": "main",
+            "args": "${command:SpecifyProgramArgs}"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
@@ -16,7 +23,7 @@
             "request": "launch",
             "mainClass": "main",
             "projectName": "2023-2024-super-class_CK_42837e0b",
-            "args": "C:/Users/Christian Kantchev/OneDrive/Documents/2023-2024-super-class_CK/001_Review/base_code/users.txt"
+            "args": ["users.txt"]
         }
     ]
 }

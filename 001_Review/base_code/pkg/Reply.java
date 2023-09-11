@@ -19,7 +19,7 @@ public class Reply extends Message {
 		super.body = bod;
 		super.id = i;
 
-		super.addChild(this);
+		//super.addChild(this);
 	}
 
 	// Returns if this is a reply (true)

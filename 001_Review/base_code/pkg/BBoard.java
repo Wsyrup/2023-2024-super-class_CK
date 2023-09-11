@@ -38,7 +38,14 @@ public class BBoard {		// This is your main file that connects all classes.
 	// Constructs a User object from each name/password pair, and populates the userList ArrayList.
 	public void loadUsers(String inputFile) throws FileNotFoundException {
 		//inputfile has to have the file extension included.
-		File data = new File(inputFile);
+		//System.out.println(new File(inputFile).getAbsolutePath());
+		//File data = new File(inputFile);
+		//C:\Users\Christian Kantchev\OneDrive\Documents\2023-2024-super-class_CK\
+		File data = new File("C:/Users/Christian Kantchev/OneDrive/Documents/2023-2024-super-class_CK/001_Review/base_code/" + inputFile);
+		System.out.println(data.getAbsolutePath());
+		System.out.println(data.exists()); //false
+
+		//System.out.println("Check me! '" +  + "'");
 		Scanner parser = new Scanner(data);
 
 		String currentLine = "";
@@ -217,17 +224,22 @@ public class BBoard {		// This is your main file that connects all classes.
 			System.out.println("There is nothing to print. Please create a topic.");
 			return;
 		}
+		// else if(msgList.size() == 1)
+		// {
+
+		// }
 		else
 		{
-			System.out.print("Message: " + msgList.get(0).getId());
-			System.out.println("\"" + msgList.get(0).getSubject() + "\"");
-			System.out.println("From: " + msgList.get(0).author + ": "+ "\"" + msgList.get(0).body + "\"\n");
-			System.out.println("\n");
-			for(int i = 0; i < msgList.size() - 1; i++)
+			// System.out.print("Message: " + msgList.get(0).getId());
+			// System.out.println("\"" + msgList.get(0).getSubject() + "\"");
+			// System.out.println("From: " + msgList.get(0).author + ": "+ "\"" + msgList.get(0).body + "\"\n");
+			// System.out.println("\n");
+			// 
+			for(int i = 0; i < msgList.size(); i++)
 			{
 				if(msgList.get(i) instanceof Topic)
 				{
-					msgList.get(i).print(1);
+					msgList.get(i).print(0);
 				}
 			}
 			return;
@@ -329,7 +341,7 @@ public class BBoard {		// This is your main file that connects all classes.
 			{
 				System.out.println("Invalid ID, try again.");
 			}
-			else if(reId < -1 || reId > msgList.size()+1)
+			else if(reId < -1 || reId >= msgList.size()+1)
 			{
 				System.out.println("Please enter a valid ID");
 			}
@@ -341,10 +353,10 @@ public class BBoard {		// This is your main file that connects all classes.
 		System.out.println("Please enter the body of your reply:");
 		rebody = this.sc.nextLine();
 
-		Message parent = msgList.get(reId - 1);
-		Message temp = new Reply(currentUser.getUsername(), "Re: " + parent.subject, rebody, msgList.size()+1);
+
+		Message temp = new Reply(currentUser.getUsername(), "Re: " + msgList.get(reId - 1).subject, rebody, msgList.size()+1);
 		msgList.add(temp);
-		parent.addChild(temp);
+		msgList.get(reId - 1).addChild(temp);
 		return;
 		//unsure if this works, especially with the id being msgList.size() + 1;
 	}

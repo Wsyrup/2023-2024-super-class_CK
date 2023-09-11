@@ -52,23 +52,30 @@ public class Message {
 
 		//System.out.println("---------------------------------------------------" + "\n");
 
-
-		System.out.println("\"" + this.getSubject() + "\"");
+		System.out.print(correctIndents(indentation) + "Message #" + this.getId() + ": " + "\"" + this.getSubject() + "\"\n");
 		System.out.println(correctIndents(indentation) + "From: " + this.author + ": "+ "\"" + this.body + "\"\n");
 		System.out.println("\n");
 
-		//focus on this last
-		if(!messageList.isEmpty())
+		if(messageList.isEmpty())
 		{
-			for(int i = 0; i < messageList.size(); i++)
+			return;
+		}
+		else
+		{
+			
+			for(int i = 0; i < this.messageList.size(); i++)
 			{
 				// System.out.println(correctIndents(indentation) + "Message #" + messageList.get(i).getId() + ": \"" + messageList.get(i).getSubject() + "\"");
 				// System.out.println(correctIndents(indentation) + "From: " + messageList.get(i).author + " \"" + messageList.get(i).body + "\n");
 				// System.out.print("\n");
-				System.out.print(correctIndents(indentation) + "Message #" + this.messageList.get(i).getId() + ": ");
+				
 				this.messageList.get(i).print(indentation++);
-			}
+			}	
 		}
+		
+
+		//focus on this last
+		
 			
 
 		//System.out.println("---------------------------------------------------");
